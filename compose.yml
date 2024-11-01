@@ -1,0 +1,72 @@
+version: "3.8"
+
+services:
+  #frontend services
+  frontend1:
+    image: martinex453/front-martin-gamboa:latest
+    networks:
+      - frontend-network
+  
+  frontend2:
+    image: martinex453/front-martin-gamboa:latest
+    networks:
+      - frontend-network
+
+  frontend3:
+    image: martinex453/front-martin-gamboa:latest
+    networks:
+      - frontend-network
+
+  #backend services
+  backend1:
+    image: martinex453/backend-martin-gamboa:latest
+    environment:
+      - DB_HOST=192.168.56.1
+    networks:
+      - backend-network
+  
+  backend2:
+    image: martinex453/backend-martin-gamboa:latest
+    environment:
+      - DB_HOST=192.168.56.1
+    networks:
+      - backend-network
+
+  backend3:
+    image: martinex453/backend-martin-gamboa:latest
+    environment:
+      - DB_HOST=192.168.56.1
+    networks:
+      - backend-network
+  
+  #nginx for frontend load balancing
+  nginx-frontend:
+    image: nginx:latest
+    ports:
+      - "5173:80"
+    volumes:
+      - ./nginx-frontend.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend1
+      - frontend2
+      - frontend3
+    networks:
+      - frontend-network
+
+  #nginx for backend load balancing
+  nginx-backend:
+    image: nginx:latest
+    ports:
+      - "8097:8097"
+    volumes:
+      - ./nginx-backend.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - backend1
+      - backend2
+      - backend3
+    networks:
+      - backend-network
+
+networks:
+  frontend-network:
+  backend-network:
