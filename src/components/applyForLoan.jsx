@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 import loanService from '../services/loan.service';
 import documentService from '../services/document.service';
 
@@ -20,6 +21,7 @@ const ApplyForLoan = () => {
     const [docPresupuestoRemodelacion, setDocPresupuestoRemodelacion] = useState("");
     const [rut, setRut] = useState("");
     const [propCost, setPropCost] = useState("");
+    const navigate = useNavigate();
 
     const applyLoan = async (e) => {
         e.preventDefault();
@@ -93,9 +95,9 @@ const ApplyForLoan = () => {
                     await documentService.uploadDocument(formData, userId);
                 }
             }
-            
-            window.location.reload();
+        
             alert("Tu solicitud ha sido enviada exitosamente.");
+            navigate("/home");
         } catch (e) {
             console.log("There was an error applying for the loan or uploading documents!", e);
         }
