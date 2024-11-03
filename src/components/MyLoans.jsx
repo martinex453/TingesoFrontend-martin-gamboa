@@ -56,14 +56,14 @@ const MyLoans = () => {
     const handleMoney = async (loanId) => {
         const loan = await loanService.getId(loanId);
         await loanService.updateState(loan.data, 9);
-        navigate("/myLoans");
+        getLoans();
     }
 
     const handleCancel = async (loanId) => {
         const loan = await loanService.getId(loanId);
         console.log(loan.data);
         await loanService.updateState(loan.data, 8);
-        navigate("/myLoans");
+        getLoans();
     }
 
     return (
