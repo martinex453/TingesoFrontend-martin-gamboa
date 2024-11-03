@@ -75,7 +75,7 @@ const updateState = (loan, state) => {
 }
 
 const maxCapital = loanId => {
-    return httpClient.get(`/api/document/loanDocs/${loanId}`, { responseType: 'blob' });
+    return httpClient.get(`/api/loan/maxCapital/${loanId}`);
 }
 
 export default {getAll, getId, getCapital, getUserId, getTerm, create, update, remove, simulate, incomeQuota, savingCapacity, debtIncome,
