@@ -21,23 +21,22 @@ const CreditEvaluation = () => {
     const navigate = useNavigate();
     const [userType, setUserType] = useState(localStorage.getItem("usertype"));
 
-    const fetchLoanStatus = async () => {
-        try {
-            const loanStatus = await loanService.statusInt(loanId);
-            setState(loanStatus.data);
-        } catch (error) {
-            console.error("Error fetching loan status:", error);
-        }
-    };
-
     useEffect(() => {
         
         if (userType !== "2") {
             navigate("/home");
         } else {
+            const fetchLoanStatus = async () => {
+                try {
+                    const loanStatus = await loanService.statusInt(loanId);
+                    setState(loanStatus.data);
+                } catch (error) {
+                    console.error("Error fetching loan status:", error);
+                }
+            };
             fetchLoanStatus();
         }
-    }, [loanId, userType, navigate]); // Asegúrate de incluir `navigate` como dependencia
+    }, [loanId, userType, navigate]);
     
 
     const upLoan = async (loanId) => {
@@ -53,7 +52,7 @@ const CreditEvaluation = () => {
     const handleDocumentSubmit = async (value) => {
         setDocuments(value);
         console.log(value);
-        const loan = await upLoan(loanId); // Obtener el loan antes de actualizarlo
+        const loan = await upLoan(loanId);
         if (loan) {
             let newState = state;
             if (value === "2") {
@@ -61,8 +60,9 @@ const CreditEvaluation = () => {
             } else {
                 newState = 2;
             }
-            await loanService.updateState(loan, newState); // Actualiza el loan en el servicio
-            fetchLoanStatus();
+            setState(newState);
+            await loanService.updateState(loan, newState);
+            renderFormByState(state);
         }
     }
 
@@ -156,12 +156,12 @@ const CreditEvaluation = () => {
                             variant="contained"
                             color="primary"
                             onClick={handleDowloadDocuments}
-                            fullWidth // Para que el botón ocupe el ancho completo
+                            fullWidth
                         >
                             Descargar Documentos
                         </Button>
 
-                        <FormControl fullWidth sx={{ mt: 2 }}> {/* Agregamos un margen superior */}
+                        <FormControl fullWidth sx={{ mt: 2 }}>
                             <InputLabel id="documents">Documentos faltantes</InputLabel>
                             <Select
                                 labelId="documents"
@@ -178,7 +178,7 @@ const CreditEvaluation = () => {
                                 variant="contained"
                                 color="primary"
                                 onClick={() => handleDocumentSubmit(documents)}
-                                sx={{ mt: 2 }} // Margen superior para el botón de confirmación
+                                sx={{ mt: 2 }}
                             >
                                 Confirmar
                             </Button>
