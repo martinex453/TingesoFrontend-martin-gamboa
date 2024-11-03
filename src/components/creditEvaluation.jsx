@@ -62,6 +62,7 @@ const CreditEvaluation = () => {
             }
             setState(newState);
             await loanService.updateState(loan, newState); // Actualiza el loan en el servicio
+            navigate("/creditEvaluation");
         }
     }
 
@@ -95,6 +96,7 @@ const CreditEvaluation = () => {
             let newState = 4; // Cambiar el estado a 4
             setState(newState);
             await loanService.updateState(loan, newState); // Actualiza el loan con el nuevo estado
+            navigate("/creditEvaluation");
         } else if(
             incomeQuota.data &&
             debtBalance.data &&
@@ -108,12 +110,14 @@ const CreditEvaluation = () => {
             let newState = 2; // Cambiar el estado a 6
             setState(newState);
             await loanService.updateState(loan, newState); // Actualiza el loan con el nuevo estado
+            navigate("/creditEvaluation");
 
         } else {
             console.log("No se cumplen las condiciones");
             let newState = 7; // Cambiar el estado a 7 si las condiciones no se cumplen
             setState(newState);
             await loanService.updateState(loan, newState); // Actualiza el loan con el nuevo estado
+            navigate("/creditEvaluation");
         }
     }
 
