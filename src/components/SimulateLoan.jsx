@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
 import { TextField, Button, Box, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import userService from "../services/loan.service";
 

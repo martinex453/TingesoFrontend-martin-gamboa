@@ -77,7 +77,7 @@ const CreditEvaluation = () => {
         const isSeniorityBalance = seniorityBalance === "true";
         const isRecentRetirement = recentRetirement === "true";
         const savingCapacity = await loanService.savingCapacity(balance, loanId, isConsistentSaving, isPeriodicSaving, isSeniorityBalance, isRecentRetirement);
-        // Verifica que todas las condiciones se cumplen
+        
         console.log("Cargo todo");
         if (
             incomeQuota.data &&
@@ -89,9 +89,9 @@ const CreditEvaluation = () => {
             workEstability == 1
         ) {
             console.log("Se cumplen las condiciones");
-            let newState = 4; // Cambiar el estado a 4
+            let newState = 4;
             setState(newState);
-            await loanService.updateState(loan, newState); // Actualiza el loan con el nuevo estado
+            await loanService.updateState(loan, newState);
         } else if(
             incomeQuota.data &&
             debtBalance.data &&
@@ -102,15 +102,15 @@ const CreditEvaluation = () => {
             workEstability == 1
         ){
             console.log("Se cumplen parcialmente las condiciones");
-            let newState = 2; // Cambiar el estado a 6
+            let newState = 2;
             setState(newState);
-            await loanService.updateState(loan, newState); // Actualiza el loan con el nuevo estado
+            await loanService.updateState(loan, newState);
 
         } else {
             console.log("No se cumplen las condiciones");
-            let newState = 7; // Cambiar el estado a 7 si las condiciones no se cumplen
+            let newState = 7;
             setState(newState);
-            await loanService.updateState(loan, newState); // Actualiza el loan con el nuevo estado
+            await loanService.updateState(loan, newState);
         }
     };
 

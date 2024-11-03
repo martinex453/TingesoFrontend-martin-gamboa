@@ -27,12 +27,12 @@ const LoanDetails = () => {
         if (loanType === 2) return "Segunda Vivienda";
         if (loanType === 3) return "Local comercial";
         if (loanType === 4) return "Remodelación";
-        return "Tipo Desconocido"; // Valor por defecto
+        return "Tipo Desconocido";
     }
 
     const handleAcceptTerms = async () => {
         try {
-            await loanService.updateState(loan, 5); // Cambia loan.data a loanId
+            await loanService.updateState(loan, 5);
             console.log("Estado actualizado correctamente.");
             Navigate("/myLoans");
         } catch (e) {

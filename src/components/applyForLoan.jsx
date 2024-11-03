@@ -3,12 +3,13 @@ import { Box, TextField, Button, FormControl, InputLabel, Select, MenuItem } fro
 import { useNavigate } from "react-router-dom";
 import loanService from '../services/loan.service';
 import documentService from '../services/document.service';
+import userService from '../services/user.service';
 
 const ApplyForLoan = () => {
     const [userId, setUserid] = useState(() => Number(localStorage.getItem("user")));
     const [capital, setCapital] = useState("");
     const [term, setTerm] = useState("");
-    const [loantype, setloantype] = useState(""); // Estado para el tipo de crédito
+    const [loantype, setloantype] = useState("");
     const [interest, setInterest] = useState("");
     const [monthfee, setMonthFee] = useState("");
     const [status, setStatus] = useState(1);
@@ -29,8 +30,12 @@ const ApplyForLoan = () => {
             alert("All fields are required!");
             return;
         }
+        const user = await userService.getId(userId);
+        if(user.data.rut !== rut){
+            alert("El rut ingresado no coincide con el rut del usuario");
+            return;
+        }
 
-        // Validaciones para el interés
         switch (loantype) {
             case "1":
                 if (interest > 5 || interest < 3.5) {
@@ -91,7 +96,6 @@ const ApplyForLoan = () => {
                         name: doc.name,
                     }
                     console.log("Uploading document:", doc.name);
-                    // Llama a un servicio para subir el documento
                     await documentService.uploadDocument(formData, userId);
                 }
             }

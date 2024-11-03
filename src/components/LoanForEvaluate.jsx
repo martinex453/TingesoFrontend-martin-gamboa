@@ -6,7 +6,7 @@ import userService from "../services/user.service";
 
 const LoanForEvaluate = () => {
     const [loans, setLoans] = useState([]);
-    const [users, setUsers] = useState({}); // Estado para almacenar los usuarios
+    const [users, setUsers] = useState({});
     const login = Number(localStorage.getItem("user"));
     const navigate = useNavigate();
     const [userType, setUserType] = useState(localStorage.getItem("usertype"));
@@ -17,7 +17,6 @@ const LoanForEvaluate = () => {
     const getLoans = () => {
         loanService.getLoansForEvaluate()
             .then(response => {
-                //filt the loans that are not from the user
                 const filteredLoans = response.data.filter(loan => loan.userId !== login);
                 setLoans(filteredLoans);
             })
@@ -27,11 +26,11 @@ const LoanForEvaluate = () => {
     }
 
     const getUsers = () => {
-        userService.getAll() // Suponiendo que tienes un endpoint que devuelve todos los usuarios
+        userService.getAll()
             .then(response => {
                 const usersMap = {};
                 response.data.forEach(user => {
-                    usersMap[user.id] = user; // Usamos el ID como clave
+                    usersMap[user.id] = user;
                 });
                 setUsers(usersMap);
             })
@@ -42,10 +41,9 @@ const LoanForEvaluate = () => {
 
     useEffect(() => {
         getLoans();
-        getUsers(); // Cargar usuarios al inicio
+        getUsers();
     }, []);
 
-    // Funciones para mapear los valores
     const getStatusString = (status) => {
         if (status === 1) return "En revisión inicial";
         if (status === 3) return "En evaluación";
@@ -53,7 +51,7 @@ const LoanForEvaluate = () => {
         if (status === 5) return "En aprobación final";
         if (status === 6) return "Aprobado";
         if (status === 9) return "En desembolso";
-        return "Desconocido"; // Valor por defecto
+        return "Desconocido";
     }
 
     const getLoanTypeString = (loantype) => {
@@ -61,7 +59,7 @@ const LoanForEvaluate = () => {
         if (loantype === 2) return "Segunda Vivienda";
         if (loantype === 3) return "Local comercial";
         if (loantype === 4) return "Remodelación";
-        return "Tipo Desconocido"; // Valor por defecto
+        return "Tipo Desconocido";
     }
 
     const handleEvaluate = (loanId) => {

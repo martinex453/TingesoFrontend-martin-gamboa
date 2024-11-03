@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { TextField, Button, Box, FormControl } from '@mui/material';
-import SaveIcon from '@mui/icons-material/Save';
 import userService from "../services/user.service";
 
 
@@ -21,7 +20,7 @@ const Register = () => {
 
     const formatDate = (date) => {
         const [year, month, day] = date.split('-');
-        return `${year}-${month}-${day}`; // Mantener el formato YYYY-MM-DD
+        return `${year}-${month}-${day}`;
     };
 
     const userReg = (e) => {

@@ -13,23 +13,17 @@ import ModifyDocuments from './components/ModifyDocuments';
 import LoanDetails from './components/LoanDetails';
 
 function App() {
-  const location = useLocation(); // Obtener la ubicación actual de la ruta
-
-  // Verificar si la ruta actual es /login o /register
+  const location = useLocation();
   const hideNavbar = location.pathname === '/' || location.pathname === '/login';
 
   return (
     <>
-      {/* Condicionar la visualización del Navbar */}
       {!hideNavbar && <Navbar />}
 
       <div className='container'>
         <Routes>
-          {/* Rutas para Login y Register */}
           <Route path="/" element={<Register />} />
           <Route path="/login" element={<Login />} />
-
-          {/* Rutas con Navbar */}
           <Route path="/simulate" element={<SimulateLoan />} />
           <Route path="/applyForLoan" element={<ApplyForLoan />} />
           <Route path="/home" element={<Home />} />

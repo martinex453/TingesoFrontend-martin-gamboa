@@ -44,7 +44,7 @@ const ModifyDocuments = () => {
                         name: doc.name,
                     }
                     console.log("Uploading document:", doc.name);
-                    // Llama a un servicio para subir el documento
+                    
                     await documentService.uploadDocument(formData, loan.userId);
                 }
             }

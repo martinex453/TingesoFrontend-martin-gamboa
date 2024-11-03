@@ -32,7 +32,7 @@ const MyLoans = () => {
         if (status === 6) return "Aprobado";
         if (status === 9) return "En desembolso";
         if (status === 8) return "Cancelado";
-        return "Desconocido"; // Valor por defecto
+        return "Desconocido";
     }
 
     const getLoanTypeString = (loantype) => {
@@ -40,7 +40,7 @@ const MyLoans = () => {
         if (loantype === 2) return "Segunda Vivienda";
         if (loantype === 3) return "Local comercial";
         if (loantype === 4) return "Remodelación";
-        return "Tipo Desconocido"; // Valor por defecto
+        return "Tipo Desconocido";
     }
 
     const handleModifyDocuments = (loanId) => {
