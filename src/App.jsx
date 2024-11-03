@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/NavbarPrestabanco';
 import Register from './components/Register';
 import Login from './components/Login';
