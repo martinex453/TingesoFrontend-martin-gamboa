@@ -21,19 +21,20 @@ const CreditEvaluation = () => {
     const navigate = useNavigate();
     const [userType, setUserType] = useState(localStorage.getItem("usertype"));
 
+    const fetchLoanStatus = async () => {
+        try {
+            const loanStatus = await loanService.statusInt(loanId);
+            setState(loanStatus.data);
+        } catch (error) {
+            console.error("Error fetching loan status:", error);
+        }
+    };
+
     useEffect(() => {
         
         if (userType !== "2") {
             navigate("/home");
         } else {
-            const fetchLoanStatus = async () => {
-                try {
-                    const loanStatus = await loanService.statusInt(loanId);
-                    setState(loanStatus.data);
-                } catch (error) {
-                    console.error("Error fetching loan status:", error);
-                }
-            };
             fetchLoanStatus();
         }
     }, [loanId, userType, navigate]); // Asegúrate de incluir `navigate` como dependencia
@@ -60,8 +61,8 @@ const CreditEvaluation = () => {
             } else {
                 newState = 2;
             }
-            setState(newState);
             await loanService.updateState(loan, newState); // Actualiza el loan en el servicio
+            fetchLoanStatus();
         }
     }
 
