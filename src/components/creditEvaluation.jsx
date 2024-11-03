@@ -131,11 +131,16 @@ const CreditEvaluation = () => {
         }
     };
 
-    const handleSign = async () => {
+    const handleSign = async (event) => {
+        event.preventDefault();
+        console.log("Entrando a handleSign");
         const loan = await upLoan(loanId);
+        console.log("luego del up");
         const newState = 6;
         setState(newState);
+        console.log("luego del set");
         await loanService.updateState(loan, newState);
+        console.log("luego del update");
     };
 
     return (
@@ -294,7 +299,8 @@ const CreditEvaluation = () => {
                         <Button type="submit"
                                 variant="contained"
                                 color="primary"
-                                onClick={handleSign}>
+                                onClick={handleSign}
+                                sx={{ mt: 2 }}>
                             Contrato Firmado
                         </Button>
                     </Box>
