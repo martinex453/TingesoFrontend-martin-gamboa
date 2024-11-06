@@ -50,6 +50,8 @@ const ModifyDocuments = () => {
             }
             
             alert("Tus documentos se han subido correctamente");
+            await loanService.updateState(loan, 1);
+            navigate("/myLoans");
         } catch (e) {
             console.log("There was an error applying for the loan or uploading documents!", e);
         }

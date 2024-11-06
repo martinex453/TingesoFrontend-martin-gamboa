@@ -87,7 +87,7 @@ const MyLoans = () => {
                                 <TableRow key={loan.id}>
                                     <TableCell align="left">{loan.capital}</TableCell>
                                     <TableCell align="left">{getLoanTypeString(loan.loantype)}</TableCell>
-                                    <TableCell align="left">{loan.term}</TableCell>
+                                    <TableCell align="right">{loan.term}</TableCell>
                                     <TableCell align="left">{getStatusString(loan.status)}</TableCell>
                                     <TableCell align="left">{loan.total}</TableCell>
                                     <TableCell align="left">{loan.monthQuote}</TableCell>
