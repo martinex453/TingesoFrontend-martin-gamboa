@@ -153,6 +153,7 @@ const CreditEvaluation = () => {
                     <Button onClick={handleDowloadDocuments} variant="contained" color="primary" fullWidth>
                         Descargar Documentos
                     </Button>
+                    <br />
                     <FormControl fullWidth sx={{ mt: 2 }}>
                         <InputLabel id="documents">Documentos faltantes</InputLabel>
                         <Select
@@ -165,6 +166,7 @@ const CreditEvaluation = () => {
                             <MenuItem value="1">Si</MenuItem>
                             <MenuItem value="2">No</MenuItem>
                         </Select>
+                        <br />
                         <Button onClick={() => handleDocumentSubmit(documents)} variant="contained" color="primary" sx={{ mt: 2 }}>
                             Confirmar
                         </Button>
@@ -177,7 +179,6 @@ const CreditEvaluation = () => {
                     </div>
                 </Box>
 
-                {/* Estado 3 */}
                 <Box style={{ display: state === 3 ? 'block' : 'none' }}>
                     <FormControl fullWidth sx={{width: '70vw'}}>
                             <TextField

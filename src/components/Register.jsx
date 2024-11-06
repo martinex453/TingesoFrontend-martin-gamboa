@@ -67,7 +67,7 @@ const Register = () => {
         >
             
             <h1>Bienvenido a PrestaBanco</h1>
-            <h4>Por favor, rellene los siguientes campos para registrarse</h4>
+            <h4>Por favor, complete los siguientes campos para registrarse</h4>
                 <FormControl fullWidth>
                     <TextField
                         id="rut"
@@ -108,6 +108,7 @@ const Register = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </FormControl>
+                <br />
                 <FormControl fullWidth>
                     <TextField
                         id="date"
