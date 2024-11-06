@@ -120,7 +120,7 @@ const SimulateLoan = () => {
                 </Button>
                 {result && (
                 <Typography variant="h6" color="textSecondary" sx={{ mt: 2, backgroundColor: '#90EE90', padding: '20px', borderRadius: '20px', color: '#ffffff', fontWeight: 'bold' }}>
-                    {typeof result === 'string' ? result : `Su crédito de ${submittedValues.capital} dolares, en un plazo de ${submittedValues.term} años, a un interés del ${submittedValues.interest}% es:\n${result} mensuales por ${submittedValues.term*12} meses.`}
+                    {typeof result === 'string' ? result : `Su crédito de ${submittedValues.capital} clp, en un plazo de ${submittedValues.term} años, a un interés del ${submittedValues.interest}% es:\n${result} clp mensuales por ${submittedValues.term*12} meses.`}
                 </Typography>
                 )}
             </Box>
