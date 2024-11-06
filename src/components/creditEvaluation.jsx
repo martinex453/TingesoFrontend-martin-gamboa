@@ -175,7 +175,7 @@ const CreditEvaluation = () => {
 
                 <Box style={{ display: state === 2 ? 'block' : 'none' }}>
                     <div style={{ color: "#000000" }}>
-                        El cliente no ha subido toda la documentación aún; podrá continuar con la revisión una vez lo haya hecho.
+                        El cliente no ha subido toda la documentación aún o se requiere una revision adicional; podrá continuar con la revisión una vez lo haya hecho.
                     </div>
                 </Box>
 

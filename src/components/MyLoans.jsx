@@ -108,7 +108,7 @@ const MyLoans = () => {
                                             </Button>
                                         )}
                                     </TableCell>
-                                    {loan.status !== 8 && (
+                                    {loan.status !== 8 && loan.status !== 9 && (
                                         <TableCell align="center">
                                             <Button variant="contained" onClick={() => handleCancel(loan.id)}>
                                                 Cancelar Solicitud
