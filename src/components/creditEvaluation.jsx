@@ -178,7 +178,7 @@ const CreditEvaluation = () => {
                         El cliente no ha subido toda la documentación aún o se requiere una revision adicional.
                     </div>
                     <div style={{ color: "#000000" }}>
-                        Se podrá continuar con la revisión se hayan manejado estas condiciones.
+                        Se podrá continuar con la revisión cuando se hayan manejado estas condiciones.
                     </div>
                     
                 </Box>
