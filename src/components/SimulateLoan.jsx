@@ -101,6 +101,7 @@ const SimulateLoan = () => {
                     <MenuItem value="2">Segunda Vivienda</MenuItem>
                     <MenuItem value="3">Propiedades Comerciales</MenuItem>
                     <MenuItem value="4">Remodelación</MenuItem>
+                    <MenuItem value="5">Tienda comercial</MenuItem>
                 </Select>
             </FormControl>
             <br/>
